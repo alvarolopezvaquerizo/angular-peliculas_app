@@ -1,0 +1,24 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">PeliculasAPP</h1>
+        <p class="lead">Esta es una aplicacion de peliculas</p>
+    </div>
+</div>
+
+<div class="container">
+    <br>
+
+    <!--
+    - Para mandar la data desde aqui al galeria.component.html lo pongo asi xxx y esto significa que va 
+      a recibir en el input peliculas la cartelera (esto es una directiva personalizada) y le pongo una pipe
+      para que solo me muestre 6 peliculas.
+    - Tambien le mando desde aqui el titulo al galeria.component.html, no se lo pongo entre [] porque no
+      es una variable, es un titulo fijo.
+    -->
+    <app-galeria [peliculas]="cartelera | slice:0:6" titulo="Películas en Cartelera"></app-galeria>
+
+    <app-galeria [peliculas]="populares | slice:0:6" titulo="Películas más Populares"></app-galeria>
+
+    <app-galeria [peliculas]="popularesNinos | slice:0:6" titulo="Películas más populares para los más pequeños"></app-galeria>
+
+</div>

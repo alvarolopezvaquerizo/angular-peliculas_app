@@ -1,0 +1,32 @@
+<div class="container main-container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Buscar:</label>
+                <!--
+                - Con (keyup.enter)="buscarPelicula()" nos permita que al dar enter haga la busqueda
+                -->
+                <input [(ngModel)]="buscar" name="buscar" (keyup.enter)="buscarPelicula()" type="text" class="form-control" placeholder="Buscar una pelicula...">
+            </div>
+        </div>
+    </div>
+
+    <div class="row animated fadeIn fast">
+        <div class="card-columns">
+
+            <div class="card" *ngFor="let pelicula of _ps.peliculas">
+                <img class="card-img-top" [src]="pelicula | peliculaImagen" [alt]="pelicula.original_tittle">
+                <div class="card-block">
+                    <h4 class="card-tittle">{{ pelicula.original_title }}</h4>
+                    <!--Con {{ pelicula.overview | slice:0:200 }} le estoy pasando por la pipe para que me ponga solo 250 caracteres-->
+                    <p class="card-text text-justify">{{ pelicula.overview | slice:0:250 }}...</p>
+                    <!--Con btn-block le digo que coja todo el ancho de la card-->
+                    <button type="button" [routerLink]="['/pelicula', pelicula.id, 'buscar', buscar]" class="btn btn-outline-primary btn-block">Ver más...</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
